@@ -2,11 +2,11 @@
                 [
                     {
                         "item":"apple",
-                        "price":1000
+                        "activity":1
                     },
                     {
                         "item":"banana",
-                        "price":1000
+                        "activity":1
                     }
                 ]
             ]

@@ -3,7 +3,7 @@ var xls = require('simple-export-excel');
 const loadJsonFile = require('load-json-file');
 
 function readJsonFile() {
-    loadJsonFile('foo.json').then(json => {
+    loadJsonFile('foo2.json').then(json => {
 
         createExcell(json);
         //=> {foo: true}
@@ -12,19 +12,22 @@ function readJsonFile() {
 
 function createExcell(data) {
     console.log(data);
-    // var headers =
-    //     [
-    //         [
-    //             "ID", "Mood","Time","Activity"
-    //         ]
-    //     ]
+    var headers =
+        [
+            [
+                "ID", "Mood","Time","Activity"
+            ],
+            [
+                "ID", "Mood","Time","Activity"
+            ]
+        ]
 
-    var headers = 
-[
-    [
-        "ID", "Mood"
-    ]
-]
+//     var headers = 
+// [
+//     [
+//         "ID", "Mood"
+//     ]
+// ]
 
     var ret = xls.exportXls(headers, data);
     console.log(data);
