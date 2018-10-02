@@ -22,10 +22,7 @@ function createExcell(data) {
     var headers = 
 [
     [
-        "item", "price"
-    ],
-    [
-        "name", "id"
+        "ID", "Mood"
     ]
 ]
 
