@@ -3,9 +3,9 @@ var xls = require('simple-export-excel');
 const loadJsonFile = require('load-json-file');
 
 function readJsonFile() {
-    loadJsonFile('foo2.json').then(json => {
-
-        createExcell(json);
+    loadJsonFile('real.json').then(json => {
+        console.log(json);
+        // createExcell(json);
         //=> {foo: true}
     });
 }
