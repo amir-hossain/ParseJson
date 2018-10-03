@@ -2,9 +2,24 @@ var http = require('http');
 var xls = require('simple-export-excel');
 const loadJsonFile = require('load-json-file');
 
+
+function getData(obj){
+    Object.keys(obj).forEach(function(data) {
+        console.log(data);
+    });
+}
+
+function getID(obj){
+    Object.keys(obj).forEach(function(id) {
+        console.log(id);
+        // getData(id);
+    });
+}
+
 function readJsonFile() {
     loadJsonFile('real.json').then(json => {
-        console.log(json);
+        // console.log(json.mood);
+        getID(json.mood);
         // createExcell(json);
         //=> {foo: true}
     });
