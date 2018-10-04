@@ -76,6 +76,7 @@ function getMainData(id, obj, keys, points) {
         user.setTime(temp.time);
         user.setActivity(temp.activity);
         user.setLocation(temp.location);
+        user.setStatus(temp.Status);
         user.setPoint(points);
         user.setDate(temp.date);
 
@@ -208,6 +209,7 @@ function createUserObject(){
 function formateUserGroup(usergroup,user){
     let userObj=createUserObject();
     userObj.ID=user.ID;
+    userObj.Status=user.Status;
     userObj.Mood=user.Mood;
     userObj.Time=user.Time;
     userObj.Activity=user.Activity;
@@ -293,10 +295,10 @@ function createExcell(data) {
     // ]
 
     // var ret = xls.exportXls(headers, data);
-    // console.log(data);
-    // var fs = require('fs');
+    console.log(data);
+    var fs = require('fs');
     // fs.writeFileSync('./test.xlsx', ret, 'binary')
-    // fs.writeFileSync('./data.json', data, 'binary')
+    fs.writeFileSync('./data.json', data, 'binary')
 }
 
 function onRequest(request, response) {
