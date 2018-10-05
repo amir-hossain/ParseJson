@@ -2,7 +2,7 @@ var http = require('http');
 var xls = require('simple-export-excel');
 const loadJsonFile = require('load-json-file');
 var Set = require("collections/set");
-
+var writeFile = require('write');
 const pointList = [];
 const userList = [];
 const dateList = new Set();
@@ -238,7 +238,7 @@ function groupUserByDate(users,dates){
     let myJSON = JSON.stringify(parrentGroup);
     // console.log(myJSON);
 
-    createExcell(myJSON);
+    writeToFile(myJSON);
 
 }
 
@@ -265,46 +265,17 @@ function readJsonFile() {
 
 }
 
-function createHeaders(){
-    let headers=[];
-    let headersData=['ID',
-    'Mood',
-    'Time',
-    'Activity',
-    'Location',
-    'Status',
-    'Points',
-    'Date'];
 
-    for(let i=0;i<stringSortedDate.length;i++){
-        headers.push(headersData);
-    }
-
-    return headers;
+function writeToFile(data){
+    writeFile('data.json', data, function(err) {
+        if (err) console.log(err);
+      });
 }
 
-function createExcell(data) {
-    // console.log(data);
-    var headers =createHeaders();
-
-    //     var headers = 
-    // [
-    //     [
-    //         "ID", "Mood"
-    //     ]
-    // ]
-
-    // var ret = xls.exportXls(headers, data);
-    console.log(data);
-    var fs = require('fs');
-    // fs.writeFileSync('./test.xlsx', ret, 'binary')
-    fs.writeFileSync('./data.json', data, 'binary')
-}
 
 function onRequest(request, response) {
     response.writeHead(200, { 'Content-Type': 'text/plane' });
     response.write('Hello world');
-    // createExcell();
     readJsonFile();
     response.end();
 }

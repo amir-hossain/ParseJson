@@ -5,7 +5,8 @@
   "main": "server.js",
   "dependencies": {
     "load-json-file": "^5.1.0",
-    "simple-export-excel": "^2.0.1"
+    "simple-export-excel": "^2.0.1",
+    "write": "^1.0.3"
   },
   "devDependencies": {},
   "scripts": {
