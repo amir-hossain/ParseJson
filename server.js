@@ -93,6 +93,9 @@ function addUniqueDate(dates) {
     dates.forEach(date => {
         if (!dateList.has(date)) {
             dateList.add(date);
+            // console.log("added: "+date);
+        }else{
+            //    console.log("discarted: "+date);
         }
     })
 }
@@ -185,6 +188,7 @@ function sortDate(dateList) {
     let singleDate;
 
     dateList.forEach(date => {
+        // console.log(date);
         singleDate = strigToDate(date);
         orginalDateList.push(singleDate);
     })
@@ -251,9 +255,11 @@ function readJsonFile() {
 
         // console.log(userList);
         let uniqueDateList = [];
-        for (let i = 0; i < dateList.length; i++) {
-            uniqueDateList.push(dateList.pop())
-        }
+        let date;
+        dateList.forEach(date=>{
+            // console.log(date);
+            uniqueDateList.push(date)
+        });
 
         sortDate(uniqueDateList);
 
