@@ -163,9 +163,6 @@ function sort(dates) {
     let sortedDate;
     let singleStringSortedDate;
     let date_sort_asc = function (date1, date2) {
-        // This is a comparison function that will result in dates being sorted in
-        // ASCENDING order. As you can see, JavaScript's native comparison operators
-        // can be used to compare dates. This was news to me.
         if (date1 > date2) return 1;
         if (date1 < date2) return -1;
         return 0;
@@ -197,47 +194,22 @@ function sortDate(dateList) {
     sort(orginalDateList);
 }
 
-function createUserObject(){
-    return {
-        ID: '',
-        Mood: '',
-        Time: '',
-        Activity: '',
-        Location: '',
-        Status: '',
-        Points: '',
-        Date: '',
-    }
-}
-
-function formateUserGroup(usergroup,user){
-    let userObj=createUserObject();
-    userObj.ID=user.ID;
-    userObj.Status=user.Status;
-    userObj.Mood=user.Mood;
-    userObj.Time=user.Time;
-    userObj.Activity=user.Activity;
-    userObj.Location=user.Location;
-    userObj.Points=user.Points;
-    userObj.Date=user.Date;
-
-    usergroup.push(userObj);
-
-}
 
 function groupUserByDate(users,dates){
     parrentGroup=[];
+    // let userGroup=[];
     dates.forEach(date=>{
         let userGroup=[];
         users.forEach(user=>{
             if(date===user.Date){
-                formateUserGroup(userGroup,user);
+                userGroup.push(user);
             }
         })
         parrentGroup.push(userGroup);
     })
 
     // console.log(parrentGroup);
+
 
     let myJSON = JSON.stringify(parrentGroup);
     // console.log(myJSON);
