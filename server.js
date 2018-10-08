@@ -6,11 +6,11 @@ function readJsonFile() {
     loadJsonFile('data.json').then(json => {
 
         createExcell(json);
-        //=> {foo: true}
+   
     });
 }
 
-function createHeaders(){
+function createHeaders(length){
     let headers=[];
     let headersData=[
     'ID',
@@ -22,35 +22,19 @@ function createHeaders(){
     'Points',
     'Date'];
 
-    for(let i=0;i<92;i++){
+    for(let i=0;i<length;i++){
         headers.push(headersData);
     }
 
-    // console.log(stringSortedDate.length);
+    console.log(length);
 
     return headers;
 }
 
 function createExcell(data) {
     // console.log(data);
-    var headers =createHeaders();
-        // [
-        //     [
-        //         "ID", "Mood","Time","Activity"
-        //     ],
-        //     [
-        //         "ID", "Mood","Time","Activity"
-        //     ]
-        // ]
-
-//     var headers = 
-// [
-//     [
-//         "ID", "Mood"
-//     ]
-// ]
-
-    // console.log(data.length);
+    var headers =createHeaders(data.length);
+   
 
     var ret = xls.exportXls(headers, data);
     console.log(data);
@@ -61,7 +45,6 @@ function createExcell(data) {
 function onRequest(request, response) {
     response.writeHead(200, { 'Content-Type': 'text/plane' });
     response.write('Hello world');
-    // createExcell();
     readJsonFile();
     response.end();
 }
